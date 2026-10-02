@@ -15,51 +15,27 @@
     @media(max-width:900px){.nav-links{position:absolute;top:70px;left:20px;right:20px;display:none;flex-direction:column;padding:14px;background:rgba(8,10,15,.94);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(16px)}.nav-links.open{display:flex}.nav-links a{width:100%}.menu-button{display:block}.hero-grid,.section-head,.about-grid,.education,.value-grid{grid-template-columns:1fr}.hero{padding-top:140px}.hero-copy{text-align:center}.hero .eyebrow,.actions{justify-content:center}.intro{margin-inline:auto}.hero-visual{max-width:520px;justify-self:center}.section-head{gap:20px}.skills-shell{grid-template-columns:1fr}.skill-tabs{position:static;display:grid;grid-template-columns:repeat(4,1fr)}.skill-tab{justify-content:center}.skill-tab span:last-child{display:none}.project,.project:nth-child(even){grid-template-columns:1fr}.project:nth-child(even) .project-visual{order:0}.services{grid-template-columns:repeat(2,1fr)}.education{text-align:center}.section{padding:90px 0}}
     @media(max-width:600px){.container{width:min(calc(100% - 28px),var(--max))}.hero{padding-top:110px}.hero h1{font-size:clamp(2.45rem,12vw,3.8rem)}.role{font-size:.92rem}.hero-visual{margin-top:16px}.orbit-label:nth-of-type(3){display:none}.scroll-cue{display:none}.section{padding:72px 0}.section-head{margin-bottom:34px}.skill-tabs{grid-template-columns:1fr 1fr}.skill-grid{grid-template-columns:1fr}.skill-panel-head{display:block}.skill-panel-head p{margin-top:10px}.project{padding:10px;min-height:0}.project-visual{min-height:280px}.project-body{padding:24px 12px 30px}.services{grid-template-columns:1fr}.timeline-item{gap:12px}.timeline-card{padding:22px 18px}.education{padding:30px 20px}.edu-art{height:220px}.footer-inner{flex-direction:column}.contact-shell::before{width:480px;height:480px}.contact-shell::after{width:310px;height:310px}.cursor-glow{display:none}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}.hero-canvas{opacity:.75}}
-    /* Hero visual: pipeline illustration */
-    .hero-visual{aspect-ratio:auto;max-width:560px;min-height:440px;display:grid;place-items:center;padding:30px 0 40px}
-    .hv-glow{position:absolute;inset:6% 4%;z-index:-1;filter:blur(46px);background:radial-gradient(circle at 28% 30%,rgba(103,232,249,.24),transparent 55%),radial-gradient(circle at 78% 72%,rgba(139,92,246,.22),transparent 55%)}
-    .hv-panel{width:100%;border-radius:22px;padding:16px;transform:perspective(1400px) rotateY(-8deg) rotateX(3deg)}
-    .hv-bar{display:flex;align-items:center;gap:6px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
-    .hv-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
-    .hv-bar span{margin-left:10px;font-size:.78rem;font-weight:700;color:#dce4ef}
-    .hv-bar em{margin-left:auto;font-style:normal;font-size:.68rem;color:#77f9c2;display:flex;align-items:center;gap:7px}
-    .hv-bar em::before{content:"";width:6px;height:6px;border-radius:50%;background:#77f9c2;box-shadow:0 0 10px #77f9c2}
-    .hv-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .hv-col{display:grid;gap:8px;align-content:start;min-height:240px;padding:10px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
-    .hv-col h4{margin:0 0 2px;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-    .hv-card{display:grid;gap:7px;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.05)}
-    .hv-card b{height:6px;width:72%;border-radius:4px;background:rgba(255,255,255,.55)}
-    .hv-card s{height:5px;width:44%;border-radius:4px;background:rgba(255,255,255,.18)}
-    .hv-card.on{border-color:rgba(103,232,249,.5);background:rgba(103,232,249,.09);box-shadow:0 0 24px rgba(103,232,249,.16)}
-    .hv-card.on b{background:var(--cyan)}
-    .hv-float{position:absolute;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;font-size:.74rem;font-weight:650;color:#e6edf6;animation:float 6s ease-in-out infinite}
-    .hv-float .ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;color:var(--cyan);background:rgba(103,232,249,.1);border:1px solid rgba(103,232,249,.25)}
-    .hv-f1{top:0;right:-2%}
-    .hv-f2{bottom:9%;left:-3%;animation-delay:-3s}
-    .hero-note{right:auto;left:50%;transform:translateX(-50%);bottom:0;white-space:nowrap}
+    /* Hero robot */
+    .rb-glow{position:absolute;inset:6%;z-index:-1;border-radius:50%;filter:blur(34px);background:radial-gradient(circle,rgba(103,232,249,.22),rgba(79,124,255,.11) 45%,transparent 70%);animation:rbPulse 6s ease-in-out infinite}
+    .rb-tilt{position:absolute;inset:0;will-change:transform}
+    .rb-float{position:absolute;inset:0;animation:rbFloat 7s ease-in-out infinite;will-change:transform}
+    .rb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;pointer-events:none}
+    .rb-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+    .hero-note{z-index:2}
+    @keyframes rbFloat{0%,100%{transform:translateY(0) rotate(-.45deg)}50%{transform:translateY(-13px) rotate(.45deg)}}
+    @keyframes rbPulse{0%,100%{opacity:.65;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
     /* Education logo */
-    .edu-logo-wrap{width:min(250px,100%);aspect-ratio:1;border-radius:50%;padding:22px;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fff,#e8eef7);box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 8px rgba(255,255,255,.05)}
-    .edu-logo{width:100%;height:100%;object-fit:contain}
-    @media(max-width:600px){.hv-panel{transform:none}.hv-f1{right:0}.hv-f2{left:0}.hv-col{min-height:180px}.hv-float{font-size:.68rem;padding:9px 11px}.edu-art{height:auto;padding:10px 0}}
+    .edu-art{height:auto;min-height:300px;display:grid;place-items:center}
+    .edu-logo-wrap{--pad:30px;position:relative;width:270px;height:270px;flex:none;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 35% 28%,#ffffff,#eaf0f8 70%);box-shadow:0 0 0 7px rgba(255,255,255,.06),0 0 0 8px rgba(255,255,255,.1),0 30px 80px rgba(0,0,0,.5)}
+    .edu-logo{position:absolute;inset:var(--pad);width:calc(100% - var(--pad)*2);height:calc(100% - var(--pad)*2);object-fit:contain;display:block}
+    @media(max-width:600px){.edu-logo-wrap{width:220px;height:220px;--pad:24px}.edu-art{min-height:250px}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a><div class="cursor-glow" aria-hidden="true"></div>
   <header class="nav" id="nav"><div class="container nav-inner"><a class="brand" href="#home" aria-label="Mark, back to home">Mark<span>.</span></a><button class="menu-button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span></button><nav class="nav-links" id="nav-links" aria-label="Primary navigation"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav></div></header>
   <main id="main">
-    <section class="hero" id="home"><div class="container hero-grid"><div class="hero-copy"><div class="eyebrow">Creative systems, built thoughtfully</div><h1>MARK WAREN <span>A. CASTILLON</span></h1><p class="role">Information Systems Graduate <span aria-hidden="true">•</span> Digital Marketer <span aria-hidden="true">•</span> Creative Technologist</p><p class="intro">Building digital experiences through technology, creativity, automation, and AI.</p><div class="actions"><a class="button primary" href="#projects">View My Work <span aria-hidden="true">↘</span></a><a class="button secondary" href="#contact">Let's Connect <span aria-hidden="true">→</span></a></div></div><div class="hero-visual" role="img" aria-label="Illustration of a lead pipeline with an automation workflow running">
-<div class="hv-glow"></div>
-<div class="hv-panel glass">
-<div class="hv-bar"><i></i><i></i><i></i><span>Lead pipeline</span><em>Automation on</em></div>
-<div class="hv-cols">
-<div class="hv-col"><h4>New lead</h4><div class="hv-card"><b></b><s></s></div><div class="hv-card"><b></b><s></s></div><div class="hv-card"><b></b><s></s></div></div>
-<div class="hv-col"><h4>Nurturing</h4><div class="hv-card"><b></b><s></s></div><div class="hv-card on"><b></b><s></s></div></div>
-<div class="hv-col"><h4>Booked</h4><div class="hv-card on"><b></b><s></s></div></div>
-</div></div>
-<div class="hv-float glass hv-f1"><span class="ic">✉</span>Follow-up email sent</div>
-<div class="hv-float glass hv-f2"><span class="ic">⟳</span>Form → Workflow → Booking</div>
-<div class="hero-note"><i></i> Open to opportunities</div>
-</div></div><a class="scroll-cue" href="#about">Explore</a></section>
+    <section class="hero" id="home"><div class="container hero-grid"><div class="hero-copy"><div class="eyebrow">Creative systems, built thoughtfully</div><h1>MARK WAREN <span>A. CASTILLON</span></h1><p class="role">Information Systems Graduate <span aria-hidden="true">•</span> Digital Marketer <span aria-hidden="true">•</span> Creative Technologist</p><p class="intro">Building digital experiences through technology, creativity, automation, and AI.</p><div class="actions"><a class="button primary" href="#projects">View My Work <span aria-hidden="true">↘</span></a><a class="button secondary" href="#contact">Let's Connect <span aria-hidden="true">→</span></a></div></div><div class="hero-visual" aria-label="Friendly automation robot surrounded by connected icons for email, calendar, analytics and workflows"><div class="rb-glow"></div><div class="rb-tilt"><div class="rb-float"><img class="rb-img" src="hero-robot.webp" alt="Friendly automation robot surrounded by connected icons" width="900" height="900" fetchpriority="high" decoding="async" draggable="false"><canvas class="rb-fx" aria-hidden="true"></canvas></div></div><div class="hero-note"><i></i> Open to opportunities</div></div></div><a class="scroll-cue" href="#about">Explore</a></section>
     <!-- Optional profile photo: add a verified image inside the About section when available. -->
     <section class="section" id="about"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">01 / About</div><h2>Where systems meet imagination.</h2></div><p class="section-lead">I’m a BS Information Systems graduate building at the intersection of technical thinking, GoHighLevel solutions, digital marketing, and visual communication.</p></div><div class="about-grid"><article class="about-card glass reveal"><p>I connect the dots between <span>technology, people, and growth</span>—with a focus on GoHighLevel websites, funnels, CRM systems, and automation, supported by hands-on creative and marketing experience.</p><div class="about-meta"><span>Based in the Philippines</span><span>GHL-focused</span><span>Systems-minded</span></div></article><div class="journey glass reveal"><div class="journey-item"><div class="journey-icon">◇</div><div><h3>Information Systems foundation</h3><p>Applying an Information Systems perspective to practical business, customer, and workflow needs.</p></div></div><div class="journey-item"><div class="journey-icon">↗</div><div><h3>GoHighLevel specialization</h3><p>Building websites, funnels, forms, calendars, pipelines, lead follow-up, and connected automations.</p></div></div><div class="journey-item"><div class="journey-icon">✦</div><div><h3>Creative & marketing execution</h3><p>Supporting systems with social media, email, video editing, graphic design, and content creation.</p></div></div></div></div></div></section>
     <section class="section" id="skills"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">02 / Capabilities</div><h2>GoHighLevel, from idea to workflow.</h2></div><p class="section-lead">My core focus is building useful GoHighLevel experiences—websites and funnels on the front end, connected CRM and automation behind them.</p></div><div class="skills-shell"><div class="skill-tabs glass reveal" role="tablist" aria-label="Skill categories"><button class="skill-tab active" role="tab" aria-selected="true" data-skill="technology"><span>GoHighLevel</span><span>06</span></button><button class="skill-tab" role="tab" aria-selected="false" data-skill="marketing"><span>Marketing</span><span>05</span></button><button class="skill-tab" role="tab" aria-selected="false" data-skill="creative"><span>Creative</span><span>03</span></button><button class="skill-tab" role="tab" aria-selected="false" data-skill="tools"><span>Tools</span><span>09</span></button></div><div class="skill-panel glass reveal" id="skill-panel" role="tabpanel" aria-live="polite"></div></div></div></section>
@@ -87,6 +63,26 @@
     const revealObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
     const sectionObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}}),{rootMargin:'-35% 0px -55%'});document.querySelectorAll('main section[id]').forEach(s=>sectionObs.observe(s));
     const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const fine=matchMedia('(pointer:fine)').matches;if(fine&&!reduced){const glow=document.querySelector('.cursor-glow');addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.transform=`perspective(1200px) rotateX(${(0.5-y)*2.2}deg) rotateY(${(x-0.5)*2.2}deg)`;card.style.setProperty('--mx',x*100+'%');card.style.setProperty('--my',y*100+'%')});card.addEventListener('pointerleave',()=>card.style.transform='')})}
+    // Hero robot: eased pointer tilt + orbiting sparkles (pauses when off-screen)
+    (()=>{const vis=document.querySelector('.hero-visual'),tilt=vis.querySelector('.rb-tilt'),cv=vis.querySelector('.rb-fx'),ctx=cv.getContext('2d');let w=0,dpr=1,tx=0,ty=0,x=0,y=0,on=false,t0=performance.now();
+    const orbits=[{cx:.5,cy:.47,rx:.356,ry:.356,rot:0,sp:.17,n:3,c:'103,232,249',front:false},{cx:.5,cy:.585,rx:.31,ry:.105,rot:-.2,sp:-.28,n:2,c:'167,139,250',front:true}];
+    let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+    const stars=Array.from({length:18},()=>{const a=rnd()*6.283,r=Math.sqrt(rnd())*.34;return{x:.5+Math.cos(a)*r,y:.47+Math.sin(a)*r,ph:rnd()*6.283,sp:.6+rnd()*1.1,c:rnd()>.7?'167,139,250':'190,246,255'}});
+    const ss=(a,b,v)=>{const q=Math.min(1,Math.max(0,(v-a)/(b-a)));return q*q*(3-2*q)};
+    function resize(){const r=cv.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);w=r.width;cv.width=w*dpr;cv.height=w*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+    function at(o,f){const px=Math.cos(f)*o.rx,py=Math.sin(f)*o.ry,cr=Math.cos(o.rot),sr=Math.sin(o.rot);return[(o.cx+px*cr-py*sr)*w,(o.cy+px*sr+py*cr)*w]}
+    function fx(t){ctx.clearRect(0,0,w,w);ctx.globalCompositeOperation='lighter';
+      stars.forEach(s=>{const k=.5+.5*Math.sin(t*s.sp+s.ph),a=.1+.6*k*k;ctx.fillStyle=`rgba(${s.c},${a})`;ctx.beginPath();ctx.arc(s.x*w,s.y*w,.9+k*1.1,0,7);ctx.fill()});
+      orbits.forEach(o=>{for(let i=0;i<o.n;i++){const f0=t*o.sp+i*6.283/o.n,vis=o.front?ss(-.05,.4,Math.sin(f0)):1;if(vis<=.01)continue;
+        for(let j=16;j>=1;j--){const f=f0-j*.032*Math.sign(o.sp),[px,py]=at(o,f),q=1-j/17,v=o.front?ss(-.05,.4,Math.sin(f)):1;ctx.fillStyle=`rgba(${o.c},${.34*q*q*Math.min(v,vis)})`;ctx.beginPath();ctx.arc(px,py,.6+2.4*q,0,7);ctx.fill()}
+        const[hx,hy]=at(o,f0),g=ctx.createRadialGradient(hx,hy,0,hx,hy,13);g.addColorStop(0,`rgba(${o.c},${.75*vis})`);g.addColorStop(1,`rgba(${o.c},0)`);ctx.fillStyle=g;ctx.beginPath();ctx.arc(hx,hy,13,0,7);ctx.fill();ctx.fillStyle=`rgba(255,255,255,${.95*vis})`;ctx.beginPath();ctx.arc(hx,hy,1.9,0,7);ctx.fill()}});
+      ctx.globalCompositeOperation='source-over'}
+    function tick(now){if(!on)return;const t=(now-t0)/1000;x+=(tx-x)*.055;y+=(ty-y)*.055;tilt.style.transform=`perspective(1100px) rotateY(${(x*8).toFixed(2)}deg) rotateX(${(-y*6).toFixed(2)}deg) translate3d(${(x*9).toFixed(2)}px,${(y*7).toFixed(2)}px,0)`;fx(t);requestAnimationFrame(tick)}
+    function go(v){if(v&&!on&&!reduced){on=true;requestAnimationFrame(tick)}else if(!v)on=false}
+    resize();addEventListener('resize',resize,{passive:true});
+    if(reduced){fx(3);return}
+    if(fine){addEventListener('pointermove',e=>{tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5},{passive:true});document.addEventListener('pointerleave',()=>tx=ty=0)}
+    let seen=true;new IntersectionObserver(en=>{seen=en[0].isIntersecting;go(seen&&!document.hidden)},{threshold:.01}).observe(vis);document.addEventListener('visibilitychange',()=>go(seen&&!document.hidden));go(true)})();
     // FIX: message now names the correct file (index.html, not portfolio.html).
     document.querySelectorAll('a[href^="YOUR_"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();alert('Replace this placeholder link in index.html with Mark’s verified URL.')}));
   </script>
