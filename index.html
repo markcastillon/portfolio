@@ -271,6 +271,10 @@
     .lb-title{font-size:clamp(1.2rem,2.4vw,1.8rem);letter-spacing:-.03em;line-height:1.15}
     .lb-tools{display:flex;gap:8px;flex:none}
     .lb-tools .icon-btn{background:var(--card)}
+    .lb-live{background:var(--ink);color:var(--bg)!important;border-color:var(--ink)}
+    .lb-live[hidden]{display:none!important}
+    .lb-live svg{width:14px;height:14px}
+    .lb-tools [hidden]{display:none!important}
     .lb-stage{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#f3f4f7;display:grid;place-items:center;min-height:0}
     .lb-stage img{max-width:100%;max-height:100%;object-fit:contain;animation:fadeUp .4s var(--ease)}
     .lb-stage.zoomed{overflow:auto;display:block;cursor:grab}
@@ -426,6 +430,11 @@
       .hero-meta{gap:8px 20px}
       .bgrid{grid-template-columns:1fr}
       .lb-foot{flex-direction:column;align-items:flex-start;gap:6px}
+      .lb-top{flex-direction:column-reverse;align-items:stretch;gap:10px}
+      .lb-tools{flex-wrap:wrap;justify-content:flex-end}
+      .lb-tools #lb-close{order:-1;margin-right:auto}
+      .lb-title{font-size:1.15rem}
+      .lb-desc{font-size:.88rem}
     }
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
@@ -627,7 +636,7 @@
     </div>
   </div>
   <div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" inert>
-    <div class="lb-top"><div><span class="mono lb-type" id="lb-type"></span><h3 class="lb-title" id="lb-title"></h3></div><div class="lb-tools"><button class="chip-btn" type="button" id="lb-zoom">Zoom in</button><button class="icon-btn" type="button" id="lb-prev" aria-label="Previous build"><span data-icon="left"></span></button><button class="icon-btn" type="button" id="lb-next" aria-label="Next build"><span data-icon="right"></span></button><button class="icon-btn" type="button" id="lb-close" aria-label="Close viewer"><span data-icon="close"></span></button></div></div>
+    <div class="lb-top"><div><span class="mono lb-type" id="lb-type"></span><h3 class="lb-title" id="lb-title"></h3></div><div class="lb-tools"><a class="chip-btn lb-live" id="lb-live" href="#" target="_blank" rel="noopener" hidden>Visit live site <span data-icon="external"></span></a><button class="chip-btn" type="button" id="lb-zoom">Zoom in</button><button class="icon-btn" type="button" id="lb-prev" aria-label="Previous build"><span data-icon="left"></span></button><button class="icon-btn" type="button" id="lb-next" aria-label="Next build"><span data-icon="right"></span></button><button class="icon-btn" type="button" id="lb-close" aria-label="Close viewer"><span data-icon="close"></span></button></div></div>
     <div class="lb-stage" id="lb-stage"><img id="lb-img" alt=""></div>
     <div class="lb-foot"><p class="lb-desc" id="lb-desc"></p><span class="mono lb-count" id="lb-count"></span></div>
   </div>
@@ -702,18 +711,38 @@
     // Images live in the "w" folder next to this file.
     const BUILDS={
       workflows:[
-        {title:'Lead Nurture Flow',img:'w/Untitled design (1).png',meta:'10+ triggers / 9 branches',
+        {title:'Lead Nurture Flow',img:'w/workflow-lead-nurture.png',meta:'10+ triggers / 9 branches',
           desc:'One workflow that catches leads from more than ten sources (Facebook lead forms, landing pages, QR forms, surveys and manual entries), alerts the team, then splits by lead source into nine nurture paths with tagging, opportunity creation, timed SMS follow-ups and pipeline updates.',
           tags:['Multi-trigger','Lead routing','SMS sequences','Pipelines']},
-        {title:'LO Assigning',img:'w/image (8).png',meta:'11 branches',
+        {title:'LO Assigning',img:'w/workflow-lo-assigning.png',meta:'11 branches',
           desc:'Routes each new survey lead to the right loan officer by state. Eleven condition branches (Texas, Arizona, Florida, California and more, plus a fallback) each assign the user, update the contact type, tag the lead, create or update the opportunity and log a note.',
           tags:['Conditions','Lead assignment','CRM','Opportunities']},
-        {title:'Book Appointment Confirm & Reminder',img:'w/Screenshot 2026-05-06 084750.png',meta:'Nested conditions',
+        {title:'Book Appointment Confirm & Reminder',img:'w/workflow-appointment-reminder.png',meta:'Nested conditions',
           desc:'An appointment-status workflow with nested conditions that handles each booking outcome: sends confirmations and internal notifications, creates or updates opportunities, tags contacts and uses Go To steps to loop reminders.',
           tags:['Appointments','Reminders','Notifications','Go To logic']}
       ],
-      websites:[],
-      funnels:[]
+      websites:[
+        {title:'Biocybernaut Institute',img:'w/website-biocybernaut.jpg',url:'https://www.biocybernaut.com/',meta:'Wellness / Brain training',
+          desc:'Website for a neurofeedback brain-training institute: a bold hero with press logos, a research-backed results section, benefit blocks and consultation-booking calls to action throughout the page.',
+          tags:['GHL Website','Lead capture','Booking','Social proof']},
+        {title:'All Service Specialists',img:'w/website-all-service-specialists.jpg',url:'https://allservicespecialists.com/',meta:'Home services / Remodeling',
+          desc:'Website for a Wisconsin roofing and remodeling contractor, with a free-estimate form built into the hero, trust badges and reviews, a full service grid and live chat for instant questions.',
+          tags:['GHL Website','Estimate form','Live chat','Local business']},
+        {title:'SEPira(k)',img:'w/website-sepirak.jpg',url:'https://www.sepirak.com/',meta:'Fintech / B2B SaaS',
+          desc:'Website for a trust-accounting platform serving custodians and banks: a clean, product-led layout with modular product cards, clear problem and solution sections and demo-booking calls to action.',
+          tags:['GHL Website','B2B','Product pages','Demo booking']}
+      ],
+      funnels:[
+        {title:'Unfold AI by Avenda Health',img:'w/funnel-unfold-ai.jpg',url:'https://get.unfold-ai.com/home-page',meta:'Healthcare / Patient education',
+          desc:'Patient-education funnel for an FDA-cleared prostate cancer AI tool: a video hero, FDA trust badges, a visual scan comparison and repeated "Talk with Avenda Health" calls to action.',
+          tags:['GHL Funnel','Video hero','Trust badges','Lead form']},
+        {title:'Orange Dermatology',img:'w/funnel-orange-dermatology.jpg',url:'https://get.ocderms.com/landing-page-page',meta:'Med aesthetics / Offer funnel',
+          desc:'Hair restoration offer funnel: before-and-after proof, a limited monthly discount for the first 25 patients and a "Check to see if you qualify" step that turns visitors into qualified leads.',
+          tags:['GHL Funnel','Offer','Before & after','Qualification']},
+        {title:'YM Ventures',img:'w/funnel-ym-ventures.jpg',url:'https://get.ymventures.net/home-page-1182-1715',meta:'Finance / Business loans',
+          desc:'Business loan pre-approval funnel with a strong hero, use-case cards for equipment, payroll, debt consolidation and expansion, and "Get Pre-Approved Now" calls to action at every step.',
+          tags:['GHL Funnel','Pre-approval','Finance','Lead generation']}
+      ]
     };
     const BUILD_LABEL={workflows:'Workflow',websites:'Website',funnels:'Funnel'};
     const tickerWords=['GoHighLevel','Funnels','CRM Pipelines','Workflow Automation','Email & SMS','Lead Generation','Canva','CapCut','Meta Business Suite','ElevenLabs','Captions AI'];
@@ -850,7 +879,7 @@
       let shown=all,cur=0,prevFocus=null,zoom=false;
       const src=p=>encodeURI(p);
       function renderGrid(cat){shown=cat==='all'?all:all.filter(b=>b.cat===cat);
-        grid.innerHTML=shown.map((b,i)=>`<button class="bcard" type="button" data-i="${i}" data-cursor="View" style="--i:${i}"><span class="bc-media"><img src="${src(b.img)}" alt="${esc(b.title)} ${BUILD_LABEL[b.cat].toLowerCase()} in GoHighLevel" loading="lazy" decoding="async"><span class="bc-badge mono">${BUILD_LABEL[b.cat]}</span></span><span class="bc-body"><span class="mono bc-type">${esc(b.meta||BUILD_LABEL[b.cat])}</span><span class="bc-title">${esc(b.title)}</span><span class="bc-desc">${esc(b.desc)}</span><span class="tags">${(b.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</span></span><span class="bc-open">View full build ${icon('arrow')}</span></button>`).join('')}
+        grid.innerHTML=shown.map((b,i)=>`<button class="bcard" type="button" data-i="${i}" data-cursor="View" style="--i:${i}"><span class="bc-media"><img src="${src(b.img)}" alt="${esc(b.title)} ${BUILD_LABEL[b.cat].toLowerCase()} in GoHighLevel" loading="lazy" decoding="async"><span class="bc-badge mono">${BUILD_LABEL[b.cat]}</span></span><span class="bc-body"><span class="mono bc-type">${esc(b.meta||BUILD_LABEL[b.cat])}</span><span class="bc-title">${esc(b.title)}</span><span class="bc-desc">${esc(b.desc)}</span><span class="tags">${(b.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</span></span><span class="bc-open">${b.url?'View page + live link':'View full build'} ${icon('arrow')}</span></button>`).join('')}
       const tabs=[['all','All',all.length],...cats.map(c=>[c,c[0].toUpperCase()+c.slice(1),BUILDS[c].slice(0,3).length])];
       if(cats.length>1){bf.innerHTML=tabs.map(([k,l,n],i)=>`<button type="button" role="tab" aria-selected="${!i}" data-k="${k}">${l}<sup>${String(n).padStart(2,'0')}</sup></button>`).join('');
         bf.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;bf.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));renderGrid(b.dataset.k)})}
@@ -859,7 +888,8 @@
       function setZoom(z){zoom=z;stage.classList.toggle('zoomed',z);zoomBtn.textContent=z?'Fit to screen':'Zoom in';
         if(z){const w=Math.max(img.naturalWidth,stage.clientWidth*1.8);img.style.width=w+'px';stage.scrollLeft=(w-stage.clientWidth)/2;stage.scrollTop=0}else img.style.width=''}
       function show(i){cur=(i+shown.length)%shown.length;const b=shown[cur];setZoom(false);img.src=src(b.img);img.alt=b.title;$('#lb-type').textContent=BUILD_LABEL[b.cat]+(b.meta?' / '+b.meta:'');$('#lb-title').textContent=b.title;$('#lb-desc').textContent=b.desc;$('#lb-count').textContent=`${String(cur+1).padStart(2,'0')} / ${String(shown.length).padStart(2,'0')}`;
-        const multi=shown.length>1;$('#lb-prev').hidden=!multi;$('#lb-next').hidden=!multi}
+        const multi=shown.length>1;$('#lb-prev').hidden=!multi;$('#lb-next').hidden=!multi;
+        const live=$('#lb-live');if(b.url){live.href=b.url;live.hidden=false}else live.hidden=true}
       function open(i,list){if(list)shown=list;prevFocus=document.activeElement;show(i);lb.inert=false;lb.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>$('#lb-close').focus(),30)}
       function close(){lb.classList.remove('open');lb.inert=true;document.body.style.overflow='';setZoom(false);prevFocus&&prevFocus.focus&&prevFocus.focus()}
       grid.addEventListener('click',e=>{const c=e.target.closest('.bcard');if(c)open(+c.dataset.i)});
